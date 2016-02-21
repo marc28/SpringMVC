@@ -1,0 +1,6 @@
+com\marc\services\ProductServiceImpl.class
+com\marc\domain\Product.class
+com\marc\SpringMvcApplication.class
+com\marc\controllers\IndexController.class
+com\marc\services\ProductService.class
+com\marc\controllers\ProductController.class
