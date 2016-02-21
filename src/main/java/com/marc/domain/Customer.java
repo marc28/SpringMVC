@@ -3,6 +3,12 @@ package com.marc.domain;
 public class Customer {
 
 	private Integer id;
+	private String firstName;
+	private String lastName;
+	private String email;
+	private String phoneNo;
+	private String addressOne, AddressTwo, city, state, zip;
+
 	public Integer getId() {
 		return id;
 	}
@@ -10,12 +16,6 @@ public class Customer {
 	public void setId(Integer id) {
 		this.id = id;
 	}
-
-	private String firstName;
-	private String lastName;
-	private String email;
-	private String phoneNo;
-	private String addressOne, AddressTwo, city, state, zip;
 
 	public String getFirstName() {
 		return firstName;

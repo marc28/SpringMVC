@@ -6,31 +6,16 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.marc.domain.Customer;
+import org.springframework.stereotype.Service;
 
+import com.marc.domain.Customer;
+@Service
 public class CustomerServiceImple implements CustomerService {
 
 	private Map<Integer, Customer> customers;
 
 	public CustomerServiceImple() {
-		customers = new HashMap<>();
 		fillCustomerList();
-	}
-
-	private void fillCustomerList() {
-		Customer cus = new Customer();
-		cus.setId(1);
-		cus.setFirstName("Marc");
-		cus.setLastName("Grogan");
-		cus.setEmail("marc@mail.com");
-		cus.setPhoneNo("123-456");
-		cus.setAddressOne("clonwood");
-		cus.setAddressTwo("Clane");
-		cus.setCity("kildare");
-		cus.setState("Leinster");
-		cus.setZip("1H-2FG");
-		customers.put(cus.getId(), cus);
-
 	}
 
 	@Override
@@ -46,7 +31,7 @@ public class CustomerServiceImple implements CustomerService {
 	@Override
 	public Customer saveOrUpdateCustomer(Customer customer) {
 		if (customer != null) {
-			if (customer.getId() != null) {
+			if (customer.getId() == null) {
 				customer.setId(nextId());
 			}
 			customers.put(customer.getId(), customer);
@@ -56,13 +41,30 @@ public class CustomerServiceImple implements CustomerService {
 		}
 	}
 
+	@Override
+	public void deleteCustomer(Integer id) {
+		customers.remove(id);
+	}
+
 	private Integer nextId() {
 		return Collections.max(customers.keySet()) + 1;
 	}
 
-	@Override
-	public void deleteCustomer(Integer id) {
-		customers.remove(id);
+	private void fillCustomerList() {
+		customers = new HashMap<>();
+		Customer cus = new Customer();
+		cus.setId(1);
+		cus.setFirstName("Marc");
+		cus.setLastName("Grogan");
+		cus.setEmail("marc@mail.com");
+		cus.setPhoneNo("123-456");
+		cus.setAddressOne("clonwood");
+		cus.setAddressTwo("Clane");
+		cus.setCity("kildare");
+		cus.setState("Leinster");
+		cus.setZip("1H-2FG");
+		customers.put(cus.getId(), cus);
+
 	}
 
 }

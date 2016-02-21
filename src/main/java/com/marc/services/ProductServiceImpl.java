@@ -25,24 +25,6 @@ public class ProductServiceImpl implements ProductService {
 		return new ArrayList<>(products.values());
 	}
 
-	private void loadAllProducts() {
-		products = new HashMap<>();
-		Product p1 = new Product();
-		p1.setId(1);
-		p1.setDescription("Mouse");
-		p1.setPrice(new BigDecimal(14.99));
-		p1.setImageURL("http://example.com/product1");
-		products.put(1, p1);
-
-		Product p2 = new Product();
-		p2.setId(2);
-		p2.setDescription("Screen");
-		p2.setPrice(new BigDecimal(99.99));
-		p2.setImageURL("http://example.com/product1");
-		products.put(2, p2);
-
-	}
-
 	@Override
 	public Product getProductById(Integer id) {
 		return products.get(id);
@@ -61,14 +43,31 @@ public class ProductServiceImpl implements ProductService {
 		}
 	}
 
+	@Override
+	public void deleteProduct(Integer id) {
+		products.remove(id);
+
+	}
+
 	private Integer getNextKey() {
 		return Collections.max(products.keySet()) + 1;
 	}
 
-	@Override
-	public void deleteProduct(Integer id) {
-		products.remove(id);
-		
-	}
+	private void loadAllProducts() {
+		products = new HashMap<>();
+		Product p1 = new Product();
+		p1.setId(1);
+		p1.setDescription("Mouse");
+		p1.setPrice(new BigDecimal(14.99));
+		p1.setImageURL("http://example.com/product1");
+		products.put(1, p1);
 
+		Product p2 = new Product();
+		p2.setId(2);
+		p2.setDescription("Screen");
+		p2.setPrice(new BigDecimal(99.99));
+		p2.setImageURL("http://example.com/product1");
+		products.put(2, p2);
+
+	}
 }

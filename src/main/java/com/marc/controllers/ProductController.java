@@ -40,6 +40,7 @@ public class ProductController {
 		model.addAttribute("product", prodSer.getProductById(id));
 		return "product";
 	}
+	
 	/**
 	 * Editing a product
 	 *
