@@ -2,16 +2,18 @@ package com.marc.domain;
 
 import java.math.BigDecimal;
 
-public class Product {
+public class Product implements DomainObjects {
 	private Integer id;
 	private String description;
 	private BigDecimal price;
 	private String imageURL;
 
+	@Override
 	public Integer getId() {
 		return id;
 	}
 
+	@Override
 	public void setId(Integer id) {
 		this.id = id;
 	}

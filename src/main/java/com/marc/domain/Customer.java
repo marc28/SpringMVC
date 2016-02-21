@@ -1,6 +1,6 @@
 package com.marc.domain;
 
-public class Customer {
+public class Customer implements DomainObjects{
 
 	private Integer id;
 	private String firstName;
@@ -9,10 +9,12 @@ public class Customer {
 	private String phoneNo;
 	private String addressOne, AddressTwo, city, state, zip;
 
+	@Override
 	public Integer getId() {
 		return id;
 	}
 
+	@Override
 	public void setId(Integer id) {
 		this.id = id;
 	}
