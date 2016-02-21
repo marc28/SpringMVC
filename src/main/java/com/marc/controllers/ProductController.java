@@ -21,6 +21,10 @@ public class ProductController {
 		this.prodSer = prodSer;
 	}
 
+	/**
+	 * Show all products
+	 * 
+	 */
 	@RequestMapping("/products")
 	public String getProducts(Model model) {
 		// 'products' is referenced in products.html L19 &L28
@@ -28,18 +32,28 @@ public class ProductController {
 		return "products";
 	}
 
+	/**
+	 * Get Product By id
+	 */
 	@RequestMapping("product/{id}")
 	public String getProductById(@PathVariable Integer id, Model model) {
 		model.addAttribute("product", prodSer.getProductById(id));
 		return "product";
 	}
-	
+	/**
+	 * Editing a product
+	 *
+	 */
 	@RequestMapping("product/edit/{id}")
 	public String edit(@PathVariable Integer id,Model model){
 		model.addAttribute("product",  prodSer.getProductById(id));
 		return "productForm";
 	}
 
+	/**
+	 * Adding a new Product
+	 *
+	 */
 	@RequestMapping("product/new") // path
 	public String addNewProduct(Model model) {
 		// 'product' below is seen in productForm.html th:object="${product}" L22
@@ -53,4 +67,13 @@ public class ProductController {
 		Product savedProduct = prodSer.saveOrUpdateProduct(product);
 		return "redirect:/product/" + savedProduct.getId();
 	}
+	/**
+	 * Deleting a Product
+	 */
+	@RequestMapping("product/delete/{id}")
+	public String delete(@PathVariable Integer id){
+		prodSer.deleteProduct(id);
+		return "redirect:/products";
+	}
+	
 }
