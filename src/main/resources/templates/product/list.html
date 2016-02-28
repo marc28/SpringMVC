@@ -33,12 +33,12 @@
                 <td th:text="${product.description}"></td>
                 <td th:text="${product.price}"></td>
                 <td th:text="${product.imageURL}"></td>
-                <td><a th:href = "${'/product/' + product.id}">View</a></td>
-                <td><a th:href = "${'product/edit/' + product.id}">Edit</a></td>
-                <td><a th:href = "${'product/delete/' + product.id}">Delete</a></td>
+                <td><a th:href = "${'/product/show/' + product.id}">View</a></td>
+                <td><a th:href = "${'/product/edit/' + product.id}">Edit</a></td>
+                <td><a th:href = "${'/product/delete/' + product.id}">Delete</a></td>
             </tr>
         </table>
-        <a href="product/new">Create New Product</a>
+        <a href="/product/new">Create New Product</a>
         
     </div>
 </div>

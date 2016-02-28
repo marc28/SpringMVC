@@ -66,7 +66,7 @@ public class CustomerController {
 	@RequestMapping(method=RequestMethod.POST)
 	public String saveOrUpdateCustomer(Customer customer){
 		Customer cus = customerService.saveOrUpdate(customer);
-		return "redirect:/customer/show/"+cus.getId();
+		return "redirect:customer/show/"+cus.getId();
 	}
 	
 	/**

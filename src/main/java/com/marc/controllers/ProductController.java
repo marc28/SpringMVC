@@ -35,7 +35,7 @@ public class ProductController {
 	/**
 	 * Get Product By id
 	 */
-	@RequestMapping("product/show/{id}")
+	@RequestMapping("/product/show/{id}")
 	public String getProductById(@PathVariable Integer id, Model model) {
 		model.addAttribute("product", prodSer.getById(id));
 		return "product/show";
@@ -55,7 +55,7 @@ public class ProductController {
 	 * Adding a new Product
 	 *
 	 */
-	@RequestMapping("product/new") // path
+	@RequestMapping("/product/new") // path
 	public String addNewProduct(Model model) {
 		// 'product' below is seen in productForm.html th:object="${product}" L22
 		model.addAttribute("product", new Product());
@@ -66,12 +66,12 @@ public class ProductController {
 	@RequestMapping(value = "/product", method = RequestMethod.POST)
 	public String saveOrUpdateProduct(Product product) {
 		Product savedProduct = prodSer.saveOrUpdate(product);
-		return "redirect:/product/show" + savedProduct.getId();
+		return "redirect:/product/show/" + savedProduct.getId();
 	}
 	/**
 	 * Deleting a Product
 	 */
-	@RequestMapping("product/delete/{id}")
+	@RequestMapping("/product/delete/{id}")
 	public String delete(@PathVariable Integer id){
 		prodSer.delete(id);
 		return "redirect:/product/list";
