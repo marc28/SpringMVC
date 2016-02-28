@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.marc.domain.Customer;
 import com.marc.services.CustomerService;
 
+//All before the refactor
+
 @Controller
 public class CustomerController {
 
