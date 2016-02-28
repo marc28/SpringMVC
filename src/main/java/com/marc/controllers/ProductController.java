@@ -45,7 +45,7 @@ public class ProductController {
 	 * Editing a product
 	 *
 	 */
-	@RequestMapping("product/edit/{id}")
+	@RequestMapping("/product/edit/{id}")
 	public String edit(@PathVariable Integer id,Model model){
 		model.addAttribute("product",  prodSer.getById(id));
 		return "product/productForm";
