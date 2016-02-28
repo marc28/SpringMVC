@@ -1,12 +1,11 @@
 package com.marc.services;
 
-import java.util.List;
 import com.marc.domain.Customer;
 
-public interface CustomerService {
-	List<Customer> showAllCustomers();
+public interface CustomerService extends CRUDService<Customer>{
+	/*List<Customer> showAllCustomers();
 	Customer getCustomerById(Integer id);
 	Customer saveOrUpdateCustomer(Customer customer);
-	void deleteCustomer(Integer id);
+	void deleteCustomer(Integer id);*/
 
 }

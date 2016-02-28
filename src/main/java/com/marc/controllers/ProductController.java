@@ -25,20 +25,20 @@ public class ProductController {
 	 * Show all products
 	 * 
 	 */
-	@RequestMapping("/products")
+	@RequestMapping("/product/list")
 	public String getProducts(Model model) {
 		// 'products' is referenced in products.html L19 &L28
 		model.addAttribute("products", prodSer.listAllProducts());
-		return "products";
+		return "product/list";
 	}
 
 	/**
 	 * Get Product By id
 	 */
-	@RequestMapping("product/{id}")
+	@RequestMapping("product/show/{id}")
 	public String getProductById(@PathVariable Integer id, Model model) {
 		model.addAttribute("product", prodSer.getProductById(id));
-		return "product";
+		return "product/show";
 	}
 	
 	/**
@@ -48,7 +48,7 @@ public class ProductController {
 	@RequestMapping("product/edit/{id}")
 	public String edit(@PathVariable Integer id,Model model){
 		model.addAttribute("product",  prodSer.getProductById(id));
-		return "productForm";
+		return "product/productForm";
 	}
 
 	/**
@@ -59,14 +59,14 @@ public class ProductController {
 	public String addNewProduct(Model model) {
 		// 'product' below is seen in productForm.html th:object="${product}" L22
 		model.addAttribute("product", new Product());
-		return "productForm"; // productForm refers to webpage name!!
+		return "product/productForm"; // productForm refers to webpage name!!
 	}
 
 	// (value = "/product") refers to "th:action="@{/product}" in L22 productForm.html
 	@RequestMapping(value = "/product", method = RequestMethod.POST)
 	public String saveOrUpdateProduct(Product product) {
 		Product savedProduct = prodSer.saveOrUpdateProduct(product);
-		return "redirect:/product/" + savedProduct.getId();
+		return "redirect:/product/show" + savedProduct.getId();
 	}
 	/**
 	 * Deleting a Product
@@ -74,7 +74,7 @@ public class ProductController {
 	@RequestMapping("product/delete/{id}")
 	public String delete(@PathVariable Integer id){
 		prodSer.deleteProduct(id);
-		return "redirect:/products";
+		return "redirect:/product/list";
 	}
 	
 }

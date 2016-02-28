@@ -1,6 +1,6 @@
 package com.marc.domain;
 
-public interface DomainObjects {
+public interface DomainObject {
 
 	public Integer getId();
 

@@ -1,6 +1,6 @@
 package com.marc.domain;
 
-public class Customer implements DomainObjects{
+public class Customer implements DomainObject{
 
 	private Integer id;
 	private String firstName;

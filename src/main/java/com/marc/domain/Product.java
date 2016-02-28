@@ -2,7 +2,7 @@ package com.marc.domain;
 
 import java.math.BigDecimal;
 
-public class Product implements DomainObjects {
+public class Product implements DomainObject {
 	private Integer id;
 	private String description;
 	private BigDecimal price;
