@@ -44,5 +44,5 @@ public abstract class AbstractMapService {
 		return Collections.max(domainMap.keySet()) + 1;
 	}
 
-	public abstract void loadDomainObjects();
+	protected abstract void loadDomainObjects();
 }

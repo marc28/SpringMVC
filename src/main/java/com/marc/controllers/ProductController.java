@@ -28,7 +28,7 @@ public class ProductController {
 	@RequestMapping("/product/list")
 	public String getProducts(Model model) {
 		// 'products' is referenced in products.html L19 &L28
-		model.addAttribute("products", prodSer.listAllProducts());
+		model.addAttribute("products", prodSer.listAll());
 		return "product/list";
 	}
 
@@ -37,7 +37,7 @@ public class ProductController {
 	 */
 	@RequestMapping("product/show/{id}")
 	public String getProductById(@PathVariable Integer id, Model model) {
-		model.addAttribute("product", prodSer.getProductById(id));
+		model.addAttribute("product", prodSer.getById(id));
 		return "product/show";
 	}
 	
@@ -47,7 +47,7 @@ public class ProductController {
 	 */
 	@RequestMapping("product/edit/{id}")
 	public String edit(@PathVariable Integer id,Model model){
-		model.addAttribute("product",  prodSer.getProductById(id));
+		model.addAttribute("product",  prodSer.getById(id));
 		return "product/productForm";
 	}
 
@@ -65,7 +65,7 @@ public class ProductController {
 	// (value = "/product") refers to "th:action="@{/product}" in L22 productForm.html
 	@RequestMapping(value = "/product", method = RequestMethod.POST)
 	public String saveOrUpdateProduct(Product product) {
-		Product savedProduct = prodSer.saveOrUpdateProduct(product);
+		Product savedProduct = prodSer.saveOrUpdate(product);
 		return "redirect:/product/show" + savedProduct.getId();
 	}
 	/**
@@ -73,7 +73,7 @@ public class ProductController {
 	 */
 	@RequestMapping("product/delete/{id}")
 	public String delete(@PathVariable Integer id){
-		prodSer.deleteProduct(id);
+		prodSer.delete(id);
 		return "redirect:/product/list";
 	}
 	
